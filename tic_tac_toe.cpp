@@ -7,8 +7,10 @@ std::vector<std::string> row2{" "," "," "};
 std::vector<std::string> row3{" "," "," "};
 char choice1pl;
 char choice2pl;
-int row;
-int column;
+int rowOne;
+int rowTwo;
+int columnOne;
+int columnTwo;
 bool gamerunning = true;
 bool gamestopped = false;
 bool gameerror = false;
@@ -34,7 +36,9 @@ void askgame() {
         choice1pl = 'O';
         choice2pl = 'X';
     } else {
-        std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!";
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!\n";
         choice2pl = '-';
         gameerror = true;
     }
@@ -44,39 +48,49 @@ void askgame() {
 void askinput1() {
     std::cout<<"Player 1, your turn"<<"\n";
     std::cout<<"Row?: ";
-    std::cin>>row;"\n";
+    std::cin>>rowOne;"\n";
     std::cout<<"Column?: ";
-    std::cin>>column;"\n";
-    if (row==0) {
-        row1[column] = choice1pl;
+    std::cin>>columnOne;"\n";
+    if (rowOne==0) {
+        row1[columnOne] = choice1pl;
     }
-    else if (row==1) {
-        row2[column] = choice1pl;
+    else if (rowOne==1) {
+        row2[columnOne] = choice1pl;
     }
-    else if (row==2) {
-        row3[column] = choice1pl;
+    else if (rowOne==2) {
+        row3[columnOne] = choice1pl;
     } else {
-        std::cout<<"Input out of range. RESTART THE GAME!!!"<<"\n";
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"Input out of range. RESTART THE GAME!!!"<<"\n\n";
         gameerror = true;
     }
 }
 void askinput2() {
     std::cout<<"Player 2, your turn"<<"\n";
     std::cout<<"Row?: ";
-    std::cin>>row;"\n";
+    std::cin>>rowTwo;"\n";
     std::cout<<"Column?: ";
-    std::cin>>column;"\n";
-    if (row==0) {
-        row1[column] = choice2pl;
+    std::cin>>columnTwo;"\n";
+    if (rowTwo==0) {
+        row1[columnTwo] = choice2pl;
     }
-    else if (row==1) {
-        row2[column] = choice2pl;
+    else if (rowTwo==1) {
+        row2[columnTwo] = choice2pl;
     }
-    else if (row==2) {
-        row3[column] = choice2pl;
+    else if (rowTwo==2) {
+        row3[columnTwo] = choice2pl;
     } else {
-        std::cout<<"Input out of range"<<"\n";
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"Input out of range. RESTART THE GAME!!!"<<"\n\n";
         gameerror = true;
+    }
+    if (rowOne==rowTwo || columnOne==columnTwo) {
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+        std::cout<<"Invalid input. RESTART THE GAME!!!"<<"\n\n";
+        gameerror=true;
     }
 }
 void checkwin() {
