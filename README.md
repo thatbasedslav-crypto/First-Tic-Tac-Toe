@@ -11,9 +11,12 @@ This is the numeration of rows and columns:
 2 - 3rd row
 
 ### Columns:
-0 - 1st column\n
-1 - 2nd column\n
-2 - 3rd column\n
+0 - 1st column
+
+1 - 2nd column
+
+2 - 3rd column
+
 
 ## Bugs
 If you enter an invalid input, the game shuts down and you have to restart it.
