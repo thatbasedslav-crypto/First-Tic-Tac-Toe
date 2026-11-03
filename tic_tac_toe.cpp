@@ -27,9 +27,11 @@ void askgame() {
     std::cout<<"Player 1, do you want to be X or O?: ";
     std::cin>>choice1pl;
     if (choice1pl=='x' || choice1pl=='X') {
+        choice1pl = 'X';
         choice2pl = 'O';
     }
     else if (choice1pl=='o' || choice1pl=='O') {
+        choice1pl = 'O';
         choice2pl = 'X';
     } else {
         std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!";
