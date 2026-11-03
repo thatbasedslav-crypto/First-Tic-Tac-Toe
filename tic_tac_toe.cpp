@@ -86,7 +86,7 @@ void askinput2() {
         std::cout<<"Input out of range. RESTART THE GAME!!!"<<"\n\n";
         gameerror = true;
     }
-    if (rowOne==rowTwo || columnOne==columnTwo) {
+    if (rowOne==rowTwo && columnOne==columnTwo) {
         std::cout<<std::endl;
         std::cout<<std::endl;
         std::cout<<"Invalid input. RESTART THE GAME!!!"<<"\n\n";
