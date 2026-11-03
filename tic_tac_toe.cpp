@@ -1,0 +1,151 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+std::vector<std::string> row1{" "," "," "};
+std::vector<std::string> row2{" "," "," "};
+std::vector<std::string> row3{" "," "," "};
+char choice1pl;
+char choice2pl;
+int row;
+int column;
+bool gamerunning = true;
+bool gamestopped = false;
+bool gameerror = false;
+
+void printboard() {
+    std::cout<<"+---+---+---+"<<"\n";
+    std::cout<<"| "<<row1[0]<<" | "<<row1[1]<<" | "<<row1[2]<<" |"<<"\n";
+    std::cout<<"+---+---+---+"<<"\n";
+    std::cout<<"| "<<row2[0]<<" | "<<row2[1]<<" | "<<row2[2]<<" |"<<"\n";
+    std::cout<<"+---+---+---+"<<"\n";
+    std::cout<<"| "<<row3[0]<<" | "<<row3[1]<<" | "<<row3[2]<<" |"<<"\n";
+    std::cout<<"+---+---+---+"<<"\n";
+}
+
+void askgame() {
+    std::cout<<"Player 1, do you want to be X or O?: ";
+    std::cin>>choice1pl;
+    if (choice1pl=='x' || choice1pl=='X') {
+        choice2pl = 'O';
+    }
+    else if (choice1pl=='o' || choice1pl=='O') {
+        choice2pl = 'X';
+    } else {
+        std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!";
+        choice2pl = '-';
+        gameerror = true;
+    }
+    std::cout<<std::endl;
+    std::cout<<"Player 2, you are "<<choice2pl<<"\n";
+}
+void askinput1() {
+    std::cout<<"Player 1, your turn"<<"\n";
+    std::cout<<"Row?: ";
+    std::cin>>row;"\n";
+    std::cout<<"Column?: ";
+    std::cin>>column;"\n";
+    if (row==0) {
+        row1[column] = choice1pl;
+    }
+    else if (row==1) {
+        row2[column] = choice1pl;
+    }
+    else if (row==2) {
+        row3[column] = choice1pl;
+    } else {
+        std::cout<<"Input out of range. RESTART THE GAME!!!"<<"\n";
+        gameerror = true;
+    }
+}
+void askinput2() {
+    std::cout<<"Player 2, your turn"<<"\n";
+    std::cout<<"Row?: ";
+    std::cin>>row;"\n";
+    std::cout<<"Column?: ";
+    std::cin>>column;"\n";
+    if (row==0) {
+        row1[column] = choice2pl;
+    }
+    else if (row==1) {
+        row2[column] = choice2pl;
+    }
+    else if (row==2) {
+        row3[column] = choice2pl;
+    } else {
+        std::cout<<"Input out of range"<<"\n";
+        gameerror = true;
+    }
+}
+void checkwin() {
+    if (row1[0]==row1[1] && row1[1]==row1[2] && row1[0]!=" " && row1[1]!=" " && row1[2]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[0]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row2[0]==row2[1] && row2[1]==row2[2] && row2[0]!=" " && row2[1]!=" " && row2[2]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row2[0]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row3[0]==row3[1] && row3[1]==row3[2] && row3[0]!=" " && row3[1]!=" " && row3[2]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row3[0]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row1[0]==row2[0] && row2[0]==row3[0] && row1[0]!=" " && row2[0]!=" " && row3[0]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[0]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row1[1]==row2[1] && row2[1]==row3[1] && row1[0]!=" " && row2[0]!=" " && row3[0]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[1]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row1[2]==row2[2] && row2[2]==row3[2] && row1[0]!=" " && row2[0]!=" " && row3[0]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[2]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row1[0]==row2[1] && row2[1]==row3[2] && row1[0]!=" " && row2[1]!=" " && row3[2]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[0]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    }
+    else if (row1[2]==row2[1] && row2[1]==row3[0] && row1[2]!=" " && row1[1]!=" " && row1[0]!=" ") {
+        std::cout<<std::endl;
+        std::cout<<"Player "<<row1[2]<<" won!!!!!!!!!"<<"\n";
+        gamerunning = false;
+        gamestopped = true;
+    } else {
+        gamerunning = true;
+        gamestopped = false;
+    }
+}
+
+int main() {
+    std::cout<<"\n";
+    std::cout<<"===WELCOME TO THE TIC TAC TOE GAME==="<<"\n\n";
+    std::cout<<"                Rules: "<<"\n\n";
+    std::cout<<"1. For rows, input 1 or 2 or 3"<<"\n";
+    std::cout<<"2. For columns, input 0 or 1 or 2"<<"\n\n";
+    askgame();
+    while (gamerunning, !gameerror) {
+        printboard();
+        askinput1();
+        askinput2();
+        checkwin();
+        if (gamestopped || gameerror) {
+            break;
+        }
+    }
+    return 0;
+}
