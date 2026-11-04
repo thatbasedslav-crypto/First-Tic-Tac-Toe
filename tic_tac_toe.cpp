@@ -26,25 +26,24 @@ void printboard() {
 }
 
 void askgame() {
-    std::cout<<"Player 1, do you want ot be X or O? ";
+    std::cout<<"Player 1, do you want to be X or O?: ";
     std::cin>>choice1pl;
-    switch (choice1pl) {
-        case 'X':
-        case 'x': 
+    if (choice1pl=='x' || choice1pl=='X') {
         choice1pl = 'X';
-        break;
-        case 'O':
-        case 'o':
+        choice2pl = 'O';
+    }
+    else if (choice1pl=='o' || choice1pl=='O') {
         choice1pl = 'O';
-        break;
-        default:
+        choice2pl = 'X';
+    } else {
         std::cout<<std::endl;
         std::cout<<std::endl;
-        std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!";
+        std::cout<<"An error occured when trying to fetch players inputs. RESTART THE GAME!!!\n";
         choice2pl = '-';
         gameerror = true;
-
     }
+    std::cout<<std::endl;
+    std::cout<<"Player 2, you are "<<choice2pl<<"\n";
 }
 void askinput1() {
     std::cout<<"Player 1, your turn"<<"\n";
