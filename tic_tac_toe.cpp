@@ -118,13 +118,13 @@ void checkwin() {
         gamerunning = false;
         gamestopped = true;
     }
-    else if (row1[1]==row2[1] && row2[1]==row3[1] && row1[0]!=" " && row2[0]!=" " && row3[0]!=" ") {
+    else if (row1[1]==row2[1] && row2[1]==row3[1] && row1[1]!=" " && row2[1]!=" " && row3[1]!=" ") {
         std::cout<<std::endl;
         std::cout<<"Player "<<row1[1]<<" won!!!!!!!!!"<<"\n";
         gamerunning = false;
         gamestopped = true;
     }
-    else if (row1[2]==row2[2] && row2[2]==row3[2] && row1[0]!=" " && row2[0]!=" " && row3[0]!=" ") {
+    else if (row1[2]==row2[2] && row2[2]==row3[2] && row1[2]!=" " && row2[2]!=" " && row3[2]!=" ") {
         std::cout<<std::endl;
         std::cout<<"Player "<<row1[2]<<" won!!!!!!!!!"<<"\n";
         gamerunning = false;
@@ -136,7 +136,7 @@ void checkwin() {
         gamerunning = false;
         gamestopped = true;
     }
-    else if (row1[2]==row2[1] && row2[1]==row3[0] && row1[2]!=" " && row1[1]!=" " && row1[0]!=" ") {
+    else if (row1[2]==row2[1] && row2[1]==row3[0] && row1[2]!=" " && row2[1]!=" " && row3[0]!=" ") {
         std::cout<<std::endl;
         std::cout<<"Player "<<row1[2]<<" won!!!!!!!!!"<<"\n";
         gamerunning = false;
